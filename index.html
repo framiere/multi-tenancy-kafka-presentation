@@ -1,0 +1,717 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Consumer Group Story</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0/css/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0/css/reveal.min.css">
+    <link rel="stylesheet" href="./dist/theme/mine.css" id="theme">
+
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section data-markdown data-separator="---" data-separator-vertical="^\n--\n$">
+            <script type="text/template">
+
+# Multi-Tenancy & Kafka
+## April 2023
+## Devoxx*FR*
+
+--
+
+<!--.slide: data-state="black-bg" -->
+# Speakers
+
+--
+
+# *Florent*
+# Ex Confluent
+# *Conduktor*
+# Geek
+# *@framiere*
+
+--
+
+# *François*
+# Ex Elastic/StarTree
+# *Conduktor*
+# Über Geek
+# *@fteychene*
+
+---
+
+<!--.slide: data-state="black-bg" -->
+# Chat GPT
+
+--
+
+### Multi-tenancy is a *software architecture* in which a single instance of an application serves multiple customers, known as tenants. 
+### Each tenant has its own *isolated data* and configuration, but *shares* the same infrastructure.
+### However, it also requires careful design and implementation to ensure that data is *properly* secured and isolated between tenants.
+
+--
+
+# *Meh*, we're not any further ahead
+
+--
+
+# Let's talk about the *pains* then
+
+--
+
+# Multi-tenancy is for
+# either *large enterprises*
+# or *compliance*
+
+--
+
+# We seem to be at *loss*...
+
+---
+
+<!--.slide: data-state="black-bg" -->
+# Back to *Kafka*
+
+--
+
+# Kafka is *awesome* 
+# *... but* <!-- .element: class="fragment" -->
+# Houston we have a problem <!-- .element: class="fragment" -->
+
+--
+
+# s/problem/*problems*/
+
+---
+
+# Problem *#1*
+# *Multiple Teams*
+
+--
+
+# Per Projects
+# *Per Partners* <!-- .element: class="fragment" -->
+# Per Business Units <!-- .element: class="fragment" -->
+# *Per Software Vendors* <!-- .element: class="fragment" -->
+
+--
+
+# Problem *#2*
+# *Multiple Environments*
+
+--
+
+# Dev
+# *PreProd* <!-- .element: class="fragment" -->
+# UAT <!-- .element: class="fragment" -->
+# *Prod* <!-- .element: class="fragment" -->
+
+--
+
+# Problem #*3*
+# *Multiple Clients* 
+
+--
+
+# Java
+# *C#* <!-- .element: class="fragment" -->
+# TypeScript <!-- .element: class="fragment" -->
+# *Rust* <!-- .element: class="fragment" -->
+
+--
+
+# Problem *#3.5*
+# Multiple *UIs*
+
+--
+
+# CLI
+# *AKHQ* <!-- .element: class="fragment" -->
+# CCloud <!-- .element: class="fragment" -->
+# *Conduktor* <!-- .element: class="fragment" -->
+
+--
+
+# Problem *#4*
+# *Multiple Requirements*
+
+--
+
+# Perf
+# *Retention* <!-- .element: class="fragment" -->
+# Msg Size <!-- .element: class="fragment" -->
+# *Encryption* <!-- .element: class="fragment" -->
+
+--
+
+# Problem *#5*
+# *Multiple Security Schemes*
+
+--
+
+# Open Bar
+# *OAuth* <!-- .element: class="fragment" -->
+# TLS <!-- .element: class="fragment" -->
+# *Kerberos* <!-- .element: class="fragment" -->
+
+--
+
+# Problem *#6*
+# *Multiple Kafka Providers*
+
+--
+
+# Kafka
+# *MSK IAM* <!-- .element: class="fragment" -->
+# Confluent Rbac <!-- .element: class="fragment" -->
+# *RedPanda WASM* <!-- .element: class="fragment" -->
+
+--
+
+# Problem *#7*
+# *Multiple Versions*
+
+--
+
+# 1.x
+# *2.x* <!-- .element: class="fragment" -->
+# 3.x <!-- .element: class="fragment" -->
+# *Kafka "compatible"* <!-- .element: class="fragment" -->
+
+--
+
+# Problem *#8*
+# *Multiple Monitoring*
+
+--
+
+# Kafka JMX
+# *MSK* <!-- .element: class="fragment" -->
+# Confluent API <!-- .element: class="fragment" -->
+# *RedPanda* <!-- .element: class="fragment" -->
+
+--
+
+# Problem *#9*
+# *Multiple Cost Structure*
+
+--
+
+# Free
+# *Per Cluster* <!-- .element: class="fragment" -->
+# Per Broker <!-- .element: class="fragment" -->
+# *Per Usage* <!-- .element: class="fragment" -->
+
+--
+
+# Problem *#10*
+# *Multiple Team Maturies*
+
+--
+
+# Newbie
+# *Experienced* <!-- .element: class="fragment" -->
+# Geeks <!-- .element: class="fragment" -->
+# *Wrong tech* <!-- .element: class="fragment" -->
+
+--
+
+# Problem *#11*
+# *Multiple GitOPS*
+
+--
+
+# Handmade
+# *ns4Kafka* <!-- .element: class="fragment" -->
+# JulieOps <!-- .element: class="fragment" -->
+# *Software Vendor* <!-- .element: class="fragment" -->
+
+--
+
+# Ok we get it *...*
+
+---
+
+<!--.slide: data-state="black-bg" -->
+# Solutions
+
+--
+
+# Always start with *Training*
+
+--
+
+# Then bring *Experience*
+
+--
+
+# Then *build* Documentation
+
+--
+
+# Then focus on *Nomenclature*
+
+--
+
+# Try per *Topic* 
+
+--
+
+# Try Custom *Partitioner*
+
+--
+
+# Or try *Headers*
+
+--
+
+# And try *Gitops*
+
+--
+
+# Or try *Common Library*
+
+--
+
+# Or create *Broker Policy plugins*
+
+--
+
+# Or *just* extend Kafka
+
+--
+
+# Or Suffer with *Status Quo*
+
+
+--
+
+# All these solutions are *partial*
+### (at best)
+---
+
+<!--.slide: data-state="black-bg" -->
+# TLDR
+
+--
+
+# Kafka awesome features
+# *+ Lack of experience* <!-- .element: class="fragment" -->
+# + Explosive growth <!-- .element: class="fragment" -->
+# *= Expensive complex state* <!-- .element: class="fragment" -->
+
+---
+
+<!--.slide: data-state="black-bg" -->
+# So, *what* can we do?
+
+--
+
+# If we can’t *trust* humans
+# If we can’t *touch* Kafka
+
+--
+
+# Your *only* option is
+# *adding magic*  <!-- .element: class="fragment" -->
+# ... between clients and Kafka! <!-- .element: class="fragment" -->
+
+--
+
+<!--.slide: data-state="black-bg" -->
+# Why?
+
+--
+
+# To add the features Kafka is *currently lacking*
+
+--
+
+# How?
+
+--
+
+# By extending the *Apache Kafka Protocol*
+
+--
+
+# Tell me *more*!
+
+--
+
+# Enter https://kafka.apache.org/protocol
+
+--
+
+# Is this a thing?
+
+--
+
+# *Conduktor playground*
+# handles more than 
+# 4000 *isolated* tenants
+# ... on a *single* cluster!
+
+--
+
+# *Conduktor playground*
+# It is an Apache Kafka 
+# *Gateway*
+
+--
+
+# Is there *other* such products out there?
+
+--
+
+# GrepLabs <a href="https://github.com/grepplabs/kafka-proxy">➚</a>
+# *Envoy <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/kafka_broker_filter">➚</a>* <!-- .element: class="fragment" -->
+# Dajudge <a href="https://github.com/dajudge/kafkaproxy">➚</a> <!-- .element: class="fragment" -->
+# *EventHub for Kafka* <a href="https://learn.microsoft.com/en-us/azure/event-hubs/azure-event-hubs-kafka-overview">➚</a> <!-- .element: class="fragment" -->
+
+---
+
+<!--.slide: data-state="black-bg" -->
+# Building a *Kafka* proxy
+# :)
+
+--
+
+# It's easy
+<pre>
+    <code class="language-plantuml">
+        @startuml
+        autonumber
+        skinparam handwritten true
+        actor Client
+        control Kafka
+        Client -> Kafka : Send data
+        Client -> Kafka : Consume data
+        @enduml
+    </code>
+</pre>
+
+--
+
+# Cluster Metadata
+<pre>
+    <code class="language-plantuml">
+        @startuml
+        autonumber
+        skinparam handwritten true
+        actor Client
+        control Broker1
+        control Broker2
+        control Broker3
+        Client -> Broker1 : Hello!
+        Broker1 -> Client : Hi there! I'm here with my other broker buddies!
+        Client -> Client : Where shall I send this data?
+        Client -> Broker3 : Send data
+        @enduml
+    </code>
+</pre>
+
+--
+
+# Let's add a proxy 
+### *(yes, you can spare 2 or 3 ms)*
+<pre>
+    <code class="language-plantuml">
+        @startuml
+        autonumber
+        skinparam handwritten true
+        actor Client
+        control Proxy
+        control Broker1
+        control Broker2
+        control Broker3
+        Client -> Proxy : Hello!
+        Proxy -> Broker1 : Hello!
+        Broker1 -> Proxy : Hi there! The cluster is broker1:9092, broker2:9092, broker3:9092
+        Proxy -> Client : Hi there! The cluster is broker1:9092, broker2:9092, broker3:9092
+        Client -> Client : Where shall I send this data?
+        Client -> Broker3 : Send data
+        Client -> Client : Damned my proxy is not used!
+        @enduml
+    </code>
+</pre>
+
+--
+
+# *Rewriting* metadata
+<pre>
+    <code class="language-plantuml">
+        @startuml
+        autonumber
+        skinparam handwritten true
+        actor Client
+        control Proxy
+        control Broker1
+        control Broker2
+        control Broker3
+        Client -> Proxy : Hello!
+        Proxy -> Broker1 : Hello!
+        Broker1 -> Proxy : Hi there! The cluster is broker1:9092, broker2:9092, broker3:9092
+        Proxy -> Client : Hi there! The cluster is proxy:6969, proxy:6970, proxy:7071
+        Client -> Client : Where shall I send this data?
+        Client -> Proxy : Send data to proxy:6971
+        Proxy -> Broker3 : Send data to proxy:6971
+        Client -> Client : Hourray!
+        @enduml
+    </code>
+</pre>
+
+--
+
+
+# Oh ... *interesting* ...
+# *What else can we do?* <!-- .element: class="fragment" -->
+
+--
+
+# Create topic *policy*
+## *naming convention* <!-- .element: class="fragment" -->
+## nb partitions <!-- .element: class="fragment" -->
+## *min.isr* <!-- .element: class="fragment" -->
+## replication factor <!-- .element: class="fragment" -->
+## *retention* <!-- .element: class="fragment" -->
+
+--
+
+# Same for *alter* topic!
+
+--
+
+# Produce *checks*
+## ack <!-- .element: class="fragment" -->
+## *headers* <!-- .element: class="fragment" -->
+## compression <!-- .element: class="fragment" -->
+## *schema* <!-- .element: class="fragment" -->
+## batch.size <!-- .element: class="fragment" -->
+
+--
+
+# Consume *checks*
+## limit client <!-- .element: class="fragment" -->
+## *limit connections* <!-- .element: class="fragment" -->
+## limit offset commit <!-- .element: class="fragment" -->
+## *limit join group* <!-- .element: class="fragment" -->
+
+--
+
+# Wait, wait, wait
+# We *really* can do what we want right? <!-- .element: class="fragment" -->
+
+--
+
+# In *previous* slides
+```
+# Then *focus* on Nomenclature
+# Or try *Headers*
+# Or try *Gitops*
+# Or try *Common Library*
+# Or create *Broker Policy plugins*
+# Or *extend* Kafka
+```
+# Let's build these ideas in the *gateway*!
+
+--
+
+# github.com/conduktor/conduktor-proxy-demos
+
+--
+
+# Safeguard
+# *Audit* <!-- .element: class="fragment" -->
+# Data Masking <!-- .element: class="fragment" -->
+# *Virtual Cluster* <!-- .element: class="fragment" -->
+# Rbac <!-- .element: class="fragment" -->
+# *Transformation* <!-- .element: class="fragment" -->
+
+--
+
+# Chaos
+# *Encryption* <!-- .element: class="fragment" -->
+# Caching <!-- .element: class="fragment" -->
+# *Claim Check* <!-- .element: class="fragment" -->
+# Concentration <!-- .element: class="fragment" -->
+
+---
+
+<!--.slide: data-state="black-bg" -->
+# Where's the *catch*?
+
+--
+
+# *Gateway* is Stateless
+## Because Kafka *is* state
+
+--
+
+# *Gateway* Scales
+## Because gateway *stateless*
+
+--
+
+# *Gateway* is Resilient
+## Because kafka protocol is *awesome*
+
+--
+
+# *Gateway* is Performant
+## Because we're just rewriting *verbs*
+
+---
+
+<!--.slide: data-state="black-bg" -->
+# Ok, but did we solve our *problems*?
+
+--
+
+# *Problem:* Multiple Teams
+# *Solution:* Virtualized clusters
+
+--
+
+
+# *Problem:* Multiple Environments
+# *Solution:* virtualized clusters
+
+--
+
+# *Problem:* Multiple Clients
+# *Solution:* Safe guard
+
+--
+
+# *Problem:* Multiple Requirements
+# *Solution:* Safe guard / Caching / Encryption / Cold-Storage / Custom
+
+--
+
+# *Problem:* Multiple Security Schemes
+# *Solution:* One single security plane
+
+--
+
+# *Problem:* Multiple Kafka Providers
+# *Solution:* One single data plane
+
+--
+
+# *Problem:* Multiple Versions
+# *Solution:* One single data plane
+
+--
+
+# *Problem:* Multiple Monitoring
+# *Solution:* One single data plane
+
+--
+
+# *Problem:* Multiple Cost Structure
+# *Solution:* One single data plane / Multi-tenancy / Cold Storage / Caching
+
+--
+
+# *Problem:* Multiple Team Maturies
+# *Solution:* Multi-tenancy / Safeguard
+
+---
+
+<!--.slide: data-state="black-bg" -->
+# T*L*D*R*
+
+--
+
+# Multi-tenant is *only*
+# the *tip of the iceberg*
+
+--
+
+## You also want 
+# *lineage* <!-- .element: class="fragment" -->
+# discoverability <!-- .element: class="fragment" -->
+# *costs reduction* <!-- .element: class="fragment" -->
+# ownership <!-- .element: class="fragment" -->
+# *simplicity* <!-- .element: class="fragment" -->
+# reversability <!-- .element: class="fragment" -->
+# *etc* <!-- .element: class="fragment" -->
+
+--
+
+# Basically,
+# you want *and* need *more*!
+
+--
+
+# You are entering ...
+# *data-mesh territory!* <!-- .element: class="fragment" -->
+
+--
+
+# Without a kafka gateway you are *doomed to eat dirt*
+
+--
+
+# We open-sourced a gateway you can *extend*
+
+--
+
+# Conduktor Gateway is the *ready to used* version of this talk for $
+
+--
+
+# Gateway enables you to 
+# *rethink* your Kafka experience
+
+---
+
+<!--.slide: data-state="black-bg" -->
+# One #last# thing...
+
+--
+
+# If you go the gateway route
+# You'll probably want to do the same for
+# Connect and Schema Registry
+
+---
+
+
+            </script>
+        </section>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script src="./dist/reveal.js"></script>
+<script src="./plugin/notes/notes.js"></script>
+<script src="./plugin/markdown/markdown.js"></script>
+<script src="./plugin/highlight/highlight.js"></script>
+<script src="./plugin/reveal.js-plantuml/reveal-plantuml.js"></script>
+<script src="./plugin/reveal.js-extrernal-code/externalcode.js"></script>
+
+<script>
+Reveal.initialize({
+ plantuml: {
+      serverPath: 'https://plantuml.com/plantuml/svg/'
+  } ,
+  hash: true,
+  plugins: [Externalcode, RevealMarkdown, RevealHighlight, RevealNotes]
+})
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
