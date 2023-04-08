@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0/css/reset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0/css/reveal.min.css">
     <link rel="stylesheet" href="./dist/theme/mine.css" id="theme">
+    <link href="custom.css" rel="stylesheet">
 
 </head>
 <body>
@@ -36,16 +37,43 @@
 
 --
 
+<img style="float: right" class="r-stretch" src="img/fteychene_bio.jpg" />
+
 # *François*
 # Ex Elastic/StarTree
 # *Conduktor*
 # Über Geek
 # *@fteychene*
 
+
+---
+
+# Kafka is awesome ❤️️
+
+--
+
+![Kafka everywhere](img/kafka_everywhere.jpg)
+
+--
+
+<!-- .slide: class="center" -->
+## But ...
+
+
+# You want <!-- .element: class="fragment" data-fragment-index="1" --> **more** <!-- .element: class="fragment" data-fragment-index="1" -->
+
+![MOAR](img/more.gif) <!-- .element: class="fragment" data-fragment-index="1" -->
+
 ---
 
 <!--.slide: data-state="black-bg" -->
-# Chat GPT
+
+# Multi-tenancy
+
+--
+
+<!--.slide: data-state="black-bg" -->
+# Chat GPT is the new Wikipedia
 
 --
 
@@ -86,7 +114,7 @@
 
 # s/problem/*problems*/
 
----
+--
 
 # Problem *#1*
 # *Multiple Teams*
@@ -237,7 +265,71 @@
 ---
 
 <!--.slide: data-state="black-bg" -->
-# Solutions
+# Now, *merge* multi-tenancy
+
+<iframe src="https://giphy.com/embed/cFkiFMDg3iFoI" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+--
+
+> Multi-tenancy is a *software architecture* in which a single instance of an application serves multiple customers, known as tenants. 
+
+*Thanks ChatGPT*
+
+--
+
+# What is a **tenant** in Kafka ?
+
+--
+
+# A tenant is the smallest unit of isolation you want to apply based on your organisation
+Conway's law, yada yada
+
+--
+
+<!-- .slide: class="center" -->
+## **Isolation for ?**
+### Data <!-- .element: class="fragment" -->
+### Constraints <!-- .element: class="fragment" -->
+### Practice enforcement <!-- .element: class="fragment" -->
+### Cost <!-- .element: class="fragment" -->
+### ... <!-- .element: class="fragment" -->
+
+--
+
+<!-- .slide: class="center" -->
+# Adapt and optimize Kafka to your organization
+
+--- 
+
+<!--.slide: data-state="black-bg" class="center" -->
+# Our use-case : **Conduktor playground**
+
+![Conduktor logo](img/conduktor.png)
+
+--
+
+## Let's provide a playground kafka cluster to every customers
+
+--
+
+<!--.slide: class="center" -->
+![Wait what gif](img/what.gif)
+
+--
+
+## Let's provide a ~playground kafka cluster~ to every ~customers~
+## Let's provide a **cluster/topic/...** to every **team/user/...**
+## Let's provide a <!-- .element: class="fragment" data-fragment-index="1"--> **Kafka ressource**<!-- .element: class="fragment" data-fragment-index="1"--> to every <!-- .element: class="fragment" data-fragment-index="1"--> **Tenant** <!-- .element: class="fragment" data-fragment-index="1"-->
+
+--
+
+<!--.slide: class="center" data-background-opacity="0.9" data-background-image="https://images.unsplash.com/photo-1525119257764-35ca8b725677?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"-->
+# **Data isolation**  <!-- .element class="text-shadow"-->
+
+---
+
+<!--.slide: data-state="black-bg" -->
+# Solutions 
 
 --
 
@@ -253,7 +345,8 @@
 
 --
 
-# Then focus on *Nomenclature*
+<!--.slide: data-state="black-bg" -->
+# Then focus on *Nomenclature* / Conventions
 
 --
 
@@ -265,44 +358,46 @@
 
 --
 
-# Or try *Headers*
+# Or try *Headers* 
 
 --
 
-# And try *Gitops*
+<!--.slide: data-state="black-bg" -->
+# And try *Gitops* / Multiple cluster
 
 --
+
+// TODO problems with multi cluster
+
+--
+
+<!--.slide: data-state="black-bg" -->
 
 # Or try *Common Library*
 
 --
 
+// TODO problems with client app libraries
+
+--
+
+<!--.slide: data-state="black-bg" -->
 # Or create *Broker Policy plugins*
+# Or <!-- .element: class="fragment" data-fragment-index="1" --> *just* <!-- .element: class="fragment" data-fragment-index="1" --> extend Kafka 
 
 --
 
-# Or *just* extend Kafka
+// TODO problems with broker plugins
 
 --
 
+<!-- Maybe we don't need this one-->
 # Or Suffer with *Status Quo*
-
 
 --
 
 # All these solutions are *partial*
 ### (at best)
----
-
-<!--.slide: data-state="black-bg" -->
-# TLDR
-
---
-
-# Kafka awesome features
-# *+ Lack of experience* <!-- .element: class="fragment" -->
-# + Explosive growth <!-- .element: class="fragment" -->
-# *= Expensive complex state* <!-- .element: class="fragment" -->
 
 ---
 
@@ -322,7 +417,6 @@
 
 --
 
-<!--.slide: data-state="black-bg" -->
 # Why?
 
 --
@@ -336,48 +430,11 @@
 --
 
 # By extending the *Apache Kafka Protocol*
+# Enter <!-- .element: class="fragment" data-fragment-index="1" --> https://kafka.apache.org/protocol <!-- .element: class="fragment" data-fragment-index="1" -->
 
 --
 
-# Tell me *more*!
-
---
-
-# Enter https://kafka.apache.org/protocol
-
---
-
-# Is this a thing?
-
---
-
-# *Conduktor playground*
-# handles more than 
-# 4000 *isolated* tenants
-# ... on a *single* cluster!
-
---
-
-# *Conduktor playground*
-# It is an Apache Kafka 
-# *Gateway*
-
---
-
-# Is there *other* such products out there?
-
---
-
-# GrepLabs <a href="https://github.com/grepplabs/kafka-proxy">➚</a>
-# *Envoy <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/kafka_broker_filter">➚</a>* <!-- .element: class="fragment" -->
-# Dajudge <a href="https://github.com/dajudge/kafkaproxy">➚</a> <!-- .element: class="fragment" -->
-# *EventHub for Kafka* <a href="https://learn.microsoft.com/en-us/azure/event-hubs/azure-event-hubs-kafka-overview">➚</a> <!-- .element: class="fragment" -->
-
----
-
-<!--.slide: data-state="black-bg" -->
-# Building a *Kafka* proxy
-# :)
+# Intercept messages
 
 --
 
@@ -467,9 +524,44 @@
 
 --
 
+# Does it work in real life ?
 
-# Oh ... *interesting* ...
+--
+
+! Demo multi tenant gateway
+
+--
+
+# *Conduktor playground*
+# handles more than 
+# 4000 *isolated* tenants
+# ... on a *single* cluster!
+
+--
+
+Conduktor gateway
+TODO 
+
+--
+
+# Is there *other* such products out there?
+
+--
+
+# GrepLabs <a href="https://github.com/grepplabs/kafka-proxy">➚</a>
+# *Envoy <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/kafka_broker_filter">➚</a>* <!-- .element: class="fragment" -->
+# Dajudge <a href="https://github.com/dajudge/kafkaproxy">➚</a> <!-- .element: class="fragment" -->
+# *EventHub for Kafka* <a href="https://learn.microsoft.com/en-us/azure/event-hubs/azure-event-hubs-kafka-overview">➚</a> <!-- .element: class="fragment" -->
+
+---
+
+<!--.slide: data-state="black-bg" -->
+# Now that we're in the protocol ...
 # *What else can we do?* <!-- .element: class="fragment" -->
+
+--
+
+# Apply rules
 
 --
 
@@ -503,72 +595,51 @@
 
 --
 
-# Wait, wait, wait
-# We *really* can do what we want right? <!-- .element: class="fragment" -->
+# You can apply solutions to your tenants
 
 --
 
 # In *previous* slides
-```
-# Then *focus* on Nomenclature
-# Or try *Headers*
-# Or try *Gitops*
-# Or try *Common Library*
-# Or create *Broker Policy plugins*
-# Or *extend* Kafka
-```
-# Let's build these ideas in the *gateway*!
+
+### Data
+### Constraints
+### Practice enforcement
+### Cost
+
+# Each have a solution that could land in a gateway to Kafka
 
 --
 
-# github.com/conduktor/conduktor-proxy-demos
+<!-- Search how to two columns -->
+
+# Constraints ?
+
+## Data Masking <!-- .element: class="fragment" -->
+## *Audit* <!-- .element: class="fragment" -->
+## Rbac <!-- .element: class="fragment" -->
+## *Encryption* <!-- .element: class="fragment" -->
+## Claim Check <!-- .element: class="fragment" -->
 
 --
 
-# Safeguard
-# *Audit* <!-- .element: class="fragment" -->
-# Data Masking <!-- .element: class="fragment" -->
-# *Virtual Cluster* <!-- .element: class="fragment" -->
-# Rbac <!-- .element: class="fragment" -->
-# *Transformation* <!-- .element: class="fragment" -->
+# Practice enforcement ?
+
+## Safeguard  <!-- .element: class="fragment" -->
+## *Transformation* <!-- .element: class="fragment" -->
+## Chaos  <!-- .element: class="fragment" -->
 
 --
 
-# Chaos
-# *Encryption* <!-- .element: class="fragment" -->
-# Caching <!-- .element: class="fragment" -->
-# *Claim Check* <!-- .element: class="fragment" -->
-# Concentration <!-- .element: class="fragment" -->
+# Cost ?
+
+## *Virtual Cluster* <!-- .element: class="fragment" -->
+## Caching <!-- .element: class="fragment" -->
+## Concentration <!-- .element: class="fragment" -->
 
 ---
 
 <!--.slide: data-state="black-bg" -->
-# Where's the *catch*?
-
---
-
-# *Gateway* is Stateless
-## Because Kafka *is* state
-
---
-
-# *Gateway* Scales
-## Because gateway *stateless*
-
---
-
-# *Gateway* is Resilient
-## Because kafka protocol is *awesome*
-
---
-
-# *Gateway* is Performant
-## Because we're just rewriting *verbs*
-
----
-
-<!--.slide: data-state="black-bg" -->
-# Ok, but did we solve our *problems*?
+# Ok, but could we solve our Kafka *problems* ?
 
 --
 
@@ -628,12 +699,16 @@
 
 --
 
-# Multi-tenant is *only*
-# the *tip of the iceberg*
+# Multi-tenancy is *not only* data isolation
+# It's the *tip of the iceberg*
 
 --
 
-## You also want 
+# Multi-tenancy*solutions* you want to apply to a isolated structure that match your organization 
+
+--
+
+## You could also want 
 # *lineage* <!-- .element: class="fragment" -->
 # discoverability <!-- .element: class="fragment" -->
 # *costs reduction* <!-- .element: class="fragment" -->
@@ -662,23 +737,14 @@
 
 --
 
-# Conduktor Gateway is the *ready to used* version of this talk for $
+# Conduktor Gateway is the *ready to use* version of this talk for $
 
 --
 
 # Gateway enables you to 
 # *rethink* your Kafka experience
+# github.com/conduktor/conduktor-proxy-demos
 
----
-
-<!--.slide: data-state="black-bg" -->
-# One #last# thing...
-
---
-
-# If you go the gateway route
-# You'll probably want to do the same for
-# Connect and Schema Registry
 
 ---
 
