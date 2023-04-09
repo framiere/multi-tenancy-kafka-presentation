@@ -29,6 +29,11 @@
 
 --
 
+<div style="float:right; width: 200px">
+    <img style="float: right" src="img/florent_bio.jpg" />
+    <img style="float: right" src="img/conduktor.png" />
+</div>
+
 # *Florent*
 # Ex Confluent
 # *Conduktor*
@@ -37,7 +42,10 @@
 
 --
 
-<img style="float: right" class="r-stretch" src="img/fteychene_bio.jpg" />
+<div style="float:right; width: 200px">
+    <img style="float: right" src="img/fteychene_bio.jpg" />
+    <img style="float: right" src="img/conduktor.png" />
+</div>
 
 # *François*
 # Ex Elastic/StarTree
@@ -267,11 +275,13 @@
 <!--.slide: data-state="black-bg" -->
 # Now, *merge* multi-tenancy
 
-<iframe src="https://giphy.com/embed/cFkiFMDg3iFoI" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<img src="img/merge.gif" />
 
 --
 
-> Multi-tenancy is a *software architecture* in which a single instance of an application serves multiple customers, known as tenants. 
+<blockquote style="width:100%; color: white">
+    <strong>Multi-tenancy is a software architecture in which a single instance of an application serves multiple customers, known as tenants.</strong>
+</blockquote>
 
 *Thanks ChatGPT*
 
@@ -281,7 +291,7 @@
 
 --
 
-# A tenant is the smallest unit of isolation you want to apply based on your organisation
+# A **tenant** is the smallest **unit of isolation** you want to apply based on your organisation
 Conway's law, yada yada
 
 --
@@ -528,14 +538,20 @@ Conway's law, yada yada
 
 --
 
-! Demo multi tenant gateway
+<img class="r-stretch" src="img/showtime.gif" alt="It's showtime gif" />
+
+
+--
+
+# Okay, okay ...
+# But does it work at <!-- .element class="fragment" -->*scale* ?
 
 --
 
 # *Conduktor playground*
 # handles more than 
 # 4000 *isolated* tenants
-# ... on a *single* cluster!
+# ... on a <!-- .element class="fragment" --> *single* cluster!
 
 --
 
@@ -549,9 +565,9 @@ TODO
 --
 
 # GrepLabs <a href="https://github.com/grepplabs/kafka-proxy">➚</a>
-# *Envoy <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/kafka_broker_filter">➚</a>* <!-- .element: class="fragment" -->
-# Dajudge <a href="https://github.com/dajudge/kafkaproxy">➚</a> <!-- .element: class="fragment" -->
-# *EventHub for Kafka* <a href="https://learn.microsoft.com/en-us/azure/event-hubs/azure-event-hubs-kafka-overview">➚</a> <!-- .element: class="fragment" -->
+# *Envoy <!-- .element: class="fragment" data-fragment-index="1" --><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/kafka_broker_filter">➚</a>* 
+# Dajudge <!-- .element: class="fragment" data-fragment-index="2" --><a href="https://github.com/dajudge/kafkaproxy">➚</a>
+# *EventHub for Kafka* <!-- .element: class="fragment" data-fragment-index="3" --><a href="https://learn.microsoft.com/en-us/azure/event-hubs/azure-event-hubs-kafka-overview">➚</a><!-- .element: class="fragment" data-fragment-index="3" -->
 
 ---
 
@@ -636,6 +652,10 @@ TODO
 ## Caching <!-- .element: class="fragment" -->
 ## Concentration <!-- .element: class="fragment" -->
 
+--
+
+
+
 ---
 
 <!--.slide: data-state="black-bg" -->
@@ -704,7 +724,7 @@ TODO
 
 --
 
-# Multi-tenancy*solutions* you want to apply to a isolated structure that match your organization 
+# Multi-tenancy is a set of *solutions* you want to apply to a *tenant*
 
 --
 
@@ -729,6 +749,10 @@ TODO
 
 --
 
+# You can solve this with a set of solutions *but ...* <!-- .element: class="fragment" -->
+
+--
+
 # Without a kafka gateway you are *doomed to eat dirt*
 
 --
@@ -748,6 +772,19 @@ TODO
 
 ---
 
+<!-- .slide: class="center" data-background-opacity="0.9" data-background-image="https://images.unsplash.com/photo-1524623243236-187b50e18f9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80" -->
+
+<div>
+    <h1 style="text-align: center"><strong class="text-shadow">Thanks</strong></h1>
+    <div style="height: 100px">
+        <img src="img/conduktor.png" />
+        <img src="img/florent_bio.jpg" />
+        <img src="img/fteychene_bio.jpg" />
+    <div>
+    <h2 style="text-align: center;">
+        <a style="color: white;" href="https://github.com/conduktor/conduktor-gateway">Conduktor gateway ➚</a>
+    </h2>
+</div>
 
             </script>
         </section>
