@@ -1,3 +1,11 @@
 .text-shadow {
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 1px 1px 1px black;
+}
+
+.slide-text-shadow h1 {
+    text-shadow: 1px 1px 1px black;
+}
+
+.slide-text-shadow h2 {
+    text-shadow: 1px 1px 1px black;
 }
