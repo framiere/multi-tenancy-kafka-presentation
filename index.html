@@ -57,7 +57,8 @@
 
 ---
 
-# Kafka is awesome ❤️️
+<!--.slide: class="slide-text-shadow" data-state="black-bg" data-background-opacity="0.7" data-background-image="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" -->
+# Kafka is awesome ❤️️ <!-- .element: style="color:white" -->
 
 --
 
@@ -75,9 +76,10 @@
 
 ---
 
-<!--.slide: data-state="black-bg" -->
+<!--.slide: class="slide-text-shadow" data-state="black-bg" data-background-opacity="0.7" data-background-image="https://images.unsplash.com/photo-1600689882600-eaa063a0cfcc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1452&q=80" -->
 
-# Multi-tenancy
+# Multi <!-- .element: style="color:white" -->
+<h1 style="float:right; color: white">tenancy</h1>
 
 --
 
@@ -110,8 +112,8 @@
 
 ---
 
-<!--.slide: data-state="black-bg" -->
-# Back to *Kafka*
+<!--.slide: class="slide-text-shadow" data-state="black-bg" data-background-opacity="0.6" data-background-image="https://images.unsplash.com/photo-1608503120873-61c4643f96b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"-->
+# Back to  <!-- .element: style="float: right"--> *Kafka*
 
 --
 
@@ -273,8 +275,8 @@
 
 ---
 
-<!--.slide: data-state="black-bg" -->
-# Now, *merge* multi-tenancy
+<!--.slide: class="slide-text-shadow" data-state="black-bg" data-background-opacity="0.6" data-background-image="https://images.unsplash.com/photo-1609349239791-53cf7964978f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"-->
+# Back to *multi-tenancy*
 
 <img src="img/merge.gif" />
 
@@ -312,7 +314,7 @@ Conway's law, yada yada
 
 --- 
 
-<!--.slide: data-state="black-bg" class="center" -->
+<!--.slide: class="center slide-text-shadow" data-state="black-bg" data-background-opacity="0.4" data-background-image="https://images.unsplash.com/photo-1512909006721-3d6018887383?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"-->
 # Our use-case : **Conduktor playground**
 
 ![Conduktor logo](img/conduktor.png)
@@ -334,13 +336,13 @@ Conway's law, yada yada
 
 --
 
-<!--.slide: class="center" data-background-opacity="0.9" data-background-image="https://images.unsplash.com/photo-1525119257764-35ca8b725677?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"-->
-# **Data isolation**  <!-- .element class="text-shadow"-->
+# Where do we start ?
 
 ---
 
-<!--.slide: data-state="black-bg" -->
-# Solutions 
+<!--.slide: class="center slide-text-shadow" data-state="black-bg" data-background-opacity="0.9" data-background-image="https://images.unsplash.com/photo-1525119257764-35ca8b725677?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"-->
+# Let's find a solution for 
+# *Data isolation*
 
 --
 
@@ -378,7 +380,7 @@ Conway's law, yada yada
 
 --
 
-// TODO problems with multi cluster
+<img class="r-stretch" src="img/cocaine.jpg" alt="An image of a cat in snow with written Cocaine, Co much cocaine" />
 
 --
 
@@ -388,7 +390,7 @@ Conway's law, yada yada
 
 --
 
-// TODO problems with client app libraries
+<img class="r-stretch" src="img/lib_dealwithit.gif" alt="A gif form the Lion King where Rafikki show simba with a text our awesome lib then throw it with a text Deal with it" />
 
 --
 
@@ -398,7 +400,7 @@ Conway's law, yada yada
 
 --
 
-// TODO problems with broker plugins
+<img class="r-stretch" src="img/yeah_uh_wow.gif" />
 
 --
 
@@ -412,7 +414,7 @@ Conway's law, yada yada
 
 ---
 
-<!--.slide: data-state="black-bg" -->
+<!--.slide: class="slide-text-shadow" data-state="black-bg" data-background-opacity="0.4" data-background-image="https://images.unsplash.com/photo-1484069560501-87d72b0c3669?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"-->
 # So, *what* can we do?
 
 --
@@ -535,6 +537,10 @@ Conway's law, yada yada
 
 --
 
+# Sooo we "just" need to filter datas based on a tenant
+
+--
+
 # Does it work in real life ?
 
 --
@@ -556,8 +562,11 @@ Conway's law, yada yada
 
 --
 
-Conduktor gateway
-TODO 
+### Playground is powered by
+# *Conduktor gateway*
+## A proxy layer over Kafka to add _features_
+
+<img src="img/gateway_arch.png" alt="Architecture schema of Gateway. Showing that it receive all the conenctions from apps abd users of a tenant to be sent to a kafka cluster" />
 
 --
 
@@ -570,15 +579,31 @@ TODO
 # Dajudge <!-- .element: class="fragment" data-fragment-index="2" --><a href="https://github.com/dajudge/kafkaproxy">➚</a>
 # *EventHub for Kafka* <!-- .element: class="fragment" data-fragment-index="3" --><a href="https://learn.microsoft.com/en-us/azure/event-hubs/azure-event-hubs-kafka-overview">➚</a><!-- .element: class="fragment" data-fragment-index="3" -->
 
+--
+
+<!-- .slide: data-state="black-bg" data-background-opacity="0.5" data-background-image="https://images.unsplash.com/photo-1538166261293-9230c2a7ee36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"-->
+# ⚠ Data isolation is not easy to code ⚠ <!-- .element: style="color:white" class="r-fit-text"-->
+
 ---
 
-<!--.slide: data-state="black-bg" -->
+
+<!--.slide: class="slide-text-shadow" data-state="black-bg" data-background-opacity="0.4" data-background-image="https://images.unsplash.com/photo-1534551767192-78b8dd45b51b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"-->
 # Now that we're in the protocol ...
 # *What else can we do?* <!-- .element: class="fragment" -->
 
 --
 
-# Apply rules
+# In *previous* slides
+
+### ~Data~
+### Constraints
+### Practice enforcement
+### Cost
+
+--
+
+# Constraints ?
+# *Apply rules*
 
 --
 
@@ -612,24 +637,7 @@ TODO
 
 --
 
-# You can apply solutions to your tenants
-
---
-
-# In *previous* slides
-
-### Data
-### Constraints
-### Practice enforcement
-### Cost
-
-# Each have a solution that could land in a gateway to Kafka
-
---
-
-<!-- Search how to two columns -->
-
-# Constraints ?
+# Security Constraints ?
 
 ## Data Masking <!-- .element: class="fragment" -->
 ## *Audit* <!-- .element: class="fragment" -->
@@ -647,7 +655,7 @@ TODO
 
 --
 
-# Cost ?
+# Cost opimization ?
 
 ## *Virtual Cluster* <!-- .element: class="fragment" -->
 ## Caching <!-- .element: class="fragment" -->
@@ -655,12 +663,14 @@ TODO
 
 --
 
-
+# Provide an access to clusters that enforce your need
+# *Adapt* a Kafka to multiple tenants
 
 ---
 
-<!--.slide: data-state="black-bg" -->
-# Ok, but could we solve our Kafka *problems* ?
+<!--.slide: class="slide-text-shadow" data-state="black-bg" data-background-opacity="0.8" data-background-image="https://images.unsplash.com/photo-1650821289259-cb51d897d706?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"-->
+
+# Could we solve our Kafka <!-- .element: style="color:white" class="r-fit-text fragment"--> _problems_ ? 
 
 --
 
@@ -725,7 +735,7 @@ TODO
 
 --
 
-# Multi-tenancy is a set of *solutions* you want to apply to a *tenant*
+# Multi-tenancy is a set of *rules and constraint* you want to apply to a *Kafka* for a *tenant*
 
 --
 
@@ -768,7 +778,7 @@ TODO
 
 # Gateway enables you to 
 # *rethink* your Kafka experience
-# github.com/conduktor/conduktor-proxy-demos
+### github.com/conduktor/conduktor-proxy-demos
 
 
 ---
