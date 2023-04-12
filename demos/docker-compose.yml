@@ -51,3 +51,20 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_LOG4J_LOGGERS: "kafka.authorizer.logger=INFO"
       KAFKA_LOG4J_ROOT_LOGLEVEL: WARN
+
+  conduktor-proxy:
+    image: conduktor/conduktor-proxy:1.0.2_rc10-amd64
+    hostname: conduktor-proxy
+    container_name: conduktor-proxy
+    depends_on:
+      - kafka1
+      - kafka2
+    ports:
+      - "6970:6970"
+      - "6971:6971"
+      - "8889:8888"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka1:9092
+      AUTHENTICATION_AUTHENTICATOR_TYPE: SASL_PLAIN
+      USER_POOL_SECRET_KEY: NDY2ZWIzYjEtNjFhMC00NDQ4LWE4NzYtMWQzMGNlODk5ZDUwCg==
+      PROXY_PORT_RANGE: "6970:6971"
