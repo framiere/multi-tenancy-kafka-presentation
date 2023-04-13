@@ -15,6 +15,6 @@ public class DevoxxSafeguardPlugin implements Plugin {
 
     @Override
     public List<Interceptor> getInterceptors() {
-        return List.of(new AckAllInterceptor());
+        return List.of(new AckAllInterceptor(), new ChaosProducerInterceptor());
     }
 }

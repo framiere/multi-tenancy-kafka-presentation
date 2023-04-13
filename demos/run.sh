@@ -56,8 +56,8 @@ figlet -w 200 'Safeguard demo'  | lolcat
 echo 'Start proxy with safeguard'
 read
 
-echo kafka-topics.sh --bootstrap-server localhost:7070 --create --topic test
-kafka-topics.sh --bootstrap-server localhost:7070 --create --topic test
+echo kafka-topics.sh --bootstrap-server localhost:7070 --create --topic devoxx
+kafka-topics.sh --bootstrap-server localhost:7070 --create --topic devoxx
 
 
 i3-msg 'split h'
@@ -69,11 +69,12 @@ echo
 
 echo -n "echo 'Ack to leaders' | kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=1'"
 read -n 1
-echo "Ack to leaders" | kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=1'
+echo "Ack to leaders" | kafka-console-producer.sh --topic devoxx --bootstrap-server localhost:7070 --producer-property 'acks=1'
 echo
 
 echo -n "echo 'Good citizen - Ack to all' | kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=-1'"
 read -n 1
-echo "Good citizen - Ack to all" | kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=-1'
+echo "Good citizen - Ack to all" | kafka-console-producer.sh --topic devoxx --bootstrap-server localhost:7070 --producer-property 'acks=-1'
 
 read -n 1
+
