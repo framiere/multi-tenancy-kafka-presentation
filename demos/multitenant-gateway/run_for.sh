@@ -4,6 +4,8 @@ set -Eeuo pipefail
 
 export PATH=/home/fteychene/kafka/bin:$PATH
 
+alacritty msg config "font.size=20"  --window-id "$ALACRITTY_WINDOW_ID"
+
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
 
 name=$1

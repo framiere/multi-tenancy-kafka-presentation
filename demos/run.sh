@@ -30,16 +30,16 @@ docker compose up -d
 
 wait_to_start 8889
 
-echo "Multi tenancy demo"
+figlet -w 200 "Multi tenancy demo" | lolcat
 echo
 
 
-i3-msg 'split v'
+i3-msg 'split v' 
 sleep 0.3
 
-alacritty msg create-window --working-directory $script_dir -e ./split.sh
+alacritty msg create-window --working-directory $script_dir -e ./split.sh > /dev/null
 
-read
+read -n 1
 
 run kafka-console-producer.sh --bootstrap-server localhost:6970 --producer.config multitenant-gateway/francois.properties --topic test
 echo
@@ -50,7 +50,7 @@ echo
 read -n 1
 clear
 
-echo 'Safeguard demo'
+figlet -w 200 'Safeguard demo'  | lolcat
 
 
 echo 'Start proxy with safeguard'
@@ -63,11 +63,17 @@ kafka-topics.sh --bootstrap-server localhost:7070 --create --topic test
 i3-msg 'split h'
 sleep 0.3
 
-alacritty msg create-window --working-directory $script_dir/safeguard -e ./run-consumer.sh
-
-echo "kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=1'"
-kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=1'
+alacritty msg create-window --working-directory $script_dir/safeguard -e ./run-consumer.sh > /dev/null
 echo
 
-echo "kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=-1'"
-kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=-1'
+
+echo -n "echo 'Ack to leaders' | kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=1'"
+read -n 1
+echo "Ack to leaders" | kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=1'
+echo
+
+echo -n "echo 'Good citizen - Ack to all' | kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=-1'"
+read -n 1
+echo "Good citizen - Ack to all" | kafka-console-producer.sh --topic test --bootstrap-server localhost:7070 --producer-property 'acks=-1'
+
+read -n 1
