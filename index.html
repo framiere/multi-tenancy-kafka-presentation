@@ -15,10 +15,10 @@
 <body>
 <div class="reveal">
     <div class="slides">
-        <section data-markdown data-separator="---" data-separator-vertical="^\n--\n$" data-state="black-bg" >
+        <section data-markdown data-separator="---" data-separator-vertical="^\n--\n$"  data-state="black-bg">
             <script type="text/template">
 
-<!-- .slide: class="slide-text-shadow black-bg" data-background-opacity="0.9" data-background-image="https://raw.githubusercontent.com/quantixx/template-presentation/master/images/2023/Backgrounds/image3.jpg" -->
+<!-- .slide: class="slide-text-shadow" data-background-opacity="0.9" data-background-image="https://raw.githubusercontent.com/quantixx/template-presentation/master/images/2023/Backgrounds/image3.jpg" -->
 # Multi-Tenancy & Kafka
 ## April 2023
 ## Devoxx*FR*
@@ -293,6 +293,12 @@
 
 *Thanks ChatGPT*
 
+<blockquote style="width:100%; color: white">
+    <strong>Can I have the same as for my database ?</strong>
+</blockquote>
+
+*Thanks Florent*
+
 --
 
 # What is a **tenant** in Kafka ?
@@ -340,8 +346,8 @@ Conway's law, yada yada
 --
 
 ## Let's provide ~playground kafka clusters~ to every ~customers~
-## Let's provide a **cluster/topic/...** to every **team/user/...**
-## Let's provide a <!-- .element: class="fragment" data-fragment-index="1"--> **Kafka ressource**<!-- .element: class="fragment" data-fragment-index="1"--> to every <!-- .element: class="fragment" data-fragment-index="1"--> **Tenant** <!-- .element: class="fragment" data-fragment-index="1"-->
+<!-- ## Let's provide a **cluster/topic/...** to every **team/user/...** -->
+## Let's provide a **Kafka ressource** to every **Tenant**
 
 --
 
@@ -671,6 +677,7 @@ Conway's law, yada yada
 
 --
 
+<!-- .slide: class="center" -->
 # Let's *assert* messages
 ![How it's done gif](img/how_its_done.gif) <!-- .element: class="fragment" -->
 
